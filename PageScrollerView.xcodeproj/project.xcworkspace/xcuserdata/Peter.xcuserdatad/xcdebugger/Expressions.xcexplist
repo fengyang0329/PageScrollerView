@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "-[PageScrollerView scrollViewDidScroll:]:PageScrollerView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "(self.centerCurrentTab">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[FirstViewController clickedBtn]:FirstViewController.m">
          <PersistentStrings>
             <PersistentString

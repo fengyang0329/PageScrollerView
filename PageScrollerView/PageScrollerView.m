@@ -565,8 +565,17 @@
     if ([self.origPageScrollViewDelegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
         [self.origPageScrollViewDelegate scrollViewDidScroll:scrollView];
     }
-    
     if (![self isAnimatingToTab]) {
+        
+        //去除bounces效果
+        if (self.activeTabIndex == 0 && scrollView.contentOffset.x < scrollView.bounds.size.width) {
+            scrollView.contentOffset = CGPointMake(scrollView.bounds.size.width, 0);
+        }
+        else if (self.activeTabIndex == (_tabCount - 1)
+                 && scrollView.contentOffset.x > scrollView.bounds.size.width) {
+            
+            scrollView.contentOffset = CGPointMake(scrollView.bounds.size.width, 0);
+        }
         UIView *tabView = [self tabViewAtIndex:self.activeTabIndex];
         
         // Get the related tab view position
@@ -603,6 +612,14 @@
     }
 }
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    
+//    if (self.activeTabIndex == 0 && scrollView.contentOffset.x < scrollView.bounds.size.width) {
+//        scrollView.contentOffset = CGPointMake(scrollView.bounds.size.width, 0);
+//    } else if (self.activeTabIndex == (_tabCount  - 1)
+//               && scrollView.contentOffset.x > scrollView.bounds.size.width) {
+//        scrollView.contentOffset = CGPointMake(scrollView.bounds.size.width, 0);
+//    }
+    
     if ([self.origPageScrollViewDelegate respondsToSelector:@selector(scrollViewWillEndDragging:withVelocity:targetContentOffset:)]) {
         [self.origPageScrollViewDelegate scrollViewWillEndDragging:scrollView withVelocity:velocity targetContentOffset:targetContentOffset];
     }

@@ -13,7 +13,7 @@
 #import "SecondViewController.h"
 #import "ThirdViewController.h"
 
-#define titleArray   [NSArray arrayWithObjects:@"知识",@"问答",@"详情", nil]
+#define titleArray   [NSArray arrayWithObjects:@"知识",@"问答",@"详情",@"知识",@"问答",@"详情",@"知识",@"问答",@"详情", nil]
 
 @interface ViewController ()<ViewPagerDataSource,ViewPagerDelegate>
 
@@ -94,7 +94,7 @@
             return 1.0;
             break;
         case ViewPagerOptionTabWidth:
-            return [UIScreen mainScreen].bounds.size.width/titleArray.count;
+            return 80;
             break;
         default:
             break;
